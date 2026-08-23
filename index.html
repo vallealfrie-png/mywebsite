@@ -1,239 +1,266 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Alfrie S. Valle — Data Scientist, Advanced Analytics & Automation Specialist. Interactive dashboards, business intelligence, full-stack data systems and automation." />
-  <meta name="theme-color" content="#070b14" />
-  <title>Alfrie Valle — Data, Analytics & Automation</title>
-
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      theme: {
-        extend: {
-          fontFamily: { sans: ['Inter', 'ui-sans-serif', 'system-ui'] },
-          colors: { ink: '#070b14', panel: '#0d1422', line: '#1c293d', accent: '#67e8f9' },
-          boxShadow: { glow: '0 0 60px rgba(103,232,249,.12)' }
-        }
-      }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Alfrie Valle | Data, Analytics & Automation</title>
+<meta name="description" content="Portfolio of Alfrie S. Valle — Data Analyst, Full-Stack Developer, and Advanced Analytics & Automation Specialist.">
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: { sans: ['Inter','ui-sans-serif','system-ui','sans-serif'] },
+      colors: { ink:'#07111f', panel:'#0d1a2b', cyanx:'#58d7ff', mint:'#7cf2c4' }
     }
-  </script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
-
-  <style>
-    html { scroll-behavior: smooth; }
-    body { background:#070b14; color:#e7eef8; }
-    .mono { font-family:'DM Mono', monospace; }
-    .grid-bg { background-image: linear-gradient(rgba(103,232,249,.055) 1px, transparent 1px), linear-gradient(90deg, rgba(103,232,249,.055) 1px, transparent 1px); background-size:44px 44px; }
-    .noise:before { content:""; position:fixed; inset:0; pointer-events:none; opacity:.035; z-index:50; background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.55'/%3E%3C/svg%3E"); }
-    .glass { background:rgba(13,20,34,.68); backdrop-filter:blur(18px); border:1px solid rgba(148,163,184,.12); }
-    .project-card { transition:transform .35s ease, border-color .35s ease, box-shadow .35s ease; }
-    .project-card:hover { transform:translateY(-8px); border-color:rgba(103,232,249,.4); box-shadow:0 25px 70px rgba(0,0,0,.35); }
-    .project-screen { background:radial-gradient(circle at 30% 10%,rgba(103,232,249,.12),transparent 34%),linear-gradient(135deg,#101a2c,#080d17); }
-    .cursor-dot { width:7px;height:7px;border-radius:999px;background:#67e8f9;position:fixed;pointer-events:none;z-index:100;mix-blend-mode:screen;transform:translate(-50%,-50%); }
-    .cursor-ring { width:34px;height:34px;border:1px solid rgba(103,232,249,.55);border-radius:999px;position:fixed;pointer-events:none;z-index:99;transform:translate(-50%,-50%); }
-    @media (pointer:coarse) { .cursor-dot,.cursor-ring{display:none} }
-    .bar { height:7px;border-radius:99px;background:#172236;overflow:hidden; }
-    .bar > span { display:block;height:100%;background:linear-gradient(90deg,#67e8f9,#818cf8);border-radius:99px;width:0; }
-    .reveal-line { overflow:hidden; }
-    .reveal-line span { display:block; transform:translateY(105%); }
-  </style>
+  }
+}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+<style>
+html{scroll-behavior:smooth}
+body{background:#050b14;color:#e8f0f8}
+.gridbg{background-image:linear-gradient(rgba(88,215,255,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(88,215,255,.055) 1px,transparent 1px);background-size:44px 44px}
+.glow{box-shadow:0 0 80px rgba(88,215,255,.08)}
+.card{background:linear-gradient(145deg,rgba(13,26,43,.94),rgba(7,17,31,.9));border:1px solid rgba(148,163,184,.13)}
+.card:hover{border-color:rgba(88,215,255,.38);transform:translateY(-4px);box-shadow:0 18px 60px rgba(0,0,0,.25)}
+.card{transition:.35s ease}
+.mono{font-family:"DM Mono",monospace}
+.gradient{background:linear-gradient(100deg,#58d7ff,#7cf2c4 55%,#c6a7ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.line{background:linear-gradient(90deg,#58d7ff,transparent)}
+.case:hover .arrow{transform:translateX(5px)}
+.arrow{transition:.25s}
+.skillbar{width:0}
+.navlink{color:#94a3b8}.navlink:hover{color:#fff}
+.reveal{opacity:0;transform:translateY(20px)}
+</style>
 </head>
-<body class="noise selection:bg-cyan-300 selection:text-slate-950">
-  <div class="cursor-dot" id="cursorDot"></div><div class="cursor-ring" id="cursorRing"></div>
+<body class="font-sans selection:bg-cyanx selection:text-ink">
+<div class="fixed inset-0 gridbg pointer-events-none opacity-60"></div>
+<div class="fixed top-0 left-1/3 w-96 h-96 bg-cyanx/10 blur-[140px] rounded-full pointer-events-none"></div>
 
-  <!-- NAV -->
-  <header class="fixed top-0 inset-x-0 z-40">
-    <nav class="max-w-7xl mx-auto px-5 lg:px-8 py-4">
-      <div class="glass rounded-2xl px-4 md:px-6 h-14 flex items-center justify-between">
-        <a href="#top" class="font-black tracking-tight text-white">AV<span class="text-cyan-300">.</span></a>
-        <div class="hidden md:flex items-center gap-7 text-sm text-slate-300">
-          <a href="#work" class="hover:text-cyan-300 transition">Work</a>
-          <a href="#capabilities" class="hover:text-cyan-300 transition">Capabilities</a>
-          <a href="#experience" class="hover:text-cyan-300 transition">Experience</a>
-          <a href="#about" class="hover:text-cyan-300 transition">About</a>
-        </div>
-        <a href="#contact" class="rounded-xl bg-cyan-300 text-slate-950 px-4 py-2 text-sm font-bold hover:bg-cyan-200 transition">Let's work</a>
-      </div>
-    </nav>
-  </header>
-
-  <main id="top">
-    <!-- HERO -->
-    <section class="relative min-h-screen grid-bg overflow-hidden pt-28">
-      <div class="absolute -top-40 right-0 w-[40rem] h-[40rem] bg-cyan-400/10 blur-[120px] rounded-full"></div>
-      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-20 lg:py-28 grid lg:grid-cols-[1.15fr_.85fr] gap-14 items-center">
-        <div data-aos="fade-up" data-aos-duration="900">
-          <div class="inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/5 px-3 py-1.5 text-xs text-cyan-200 mono mb-7">
-            <span class="w-1.5 h-1.5 rounded-full bg-cyan-300 animate-pulse"></span> AVAILABLE FOR FREELANCE PROJECTS
-          </div>
-          <p class="mono text-xs text-slate-500 mb-5">DATA × PRODUCT × AUTOMATION</p>
-          <h1 class="text-5xl sm:text-6xl lg:text-8xl font-black tracking-[-.055em] leading-[.92] text-white">
-            I turn messy data into <span class="text-transparent bg-clip-text bg-gradient-to-r from-cyan-300 to-indigo-400">working systems.</span>
-          </h1>
-          <p class="mt-8 max-w-2xl text-lg md:text-xl text-slate-300 leading-relaxed">I'm Alfrie Valle — a Data Scientist, advanced analytics and automation specialist, and full-stack developer building dashboards, data products and business systems that people can actually use.</p>
-          <div class="mt-9 flex flex-wrap gap-3">
-            <a href="#work" class="rounded-xl bg-white text-slate-950 px-5 py-3 font-bold hover:bg-cyan-200 transition">Explore my work <span class="ml-1">↘</span></a>
-            <a href="Alfrie-Valle-CV.pdf" download class="rounded-xl border border-slate-700 px-5 py-3 font-semibold text-white hover:border-cyan-300/50 transition">Download CV</a>
-          </div>
-          <div class="mt-10 flex flex-wrap gap-x-8 gap-y-3 text-sm text-slate-500">
-            <span>SQL / PostgreSQL</span><span>Python</span><span>JavaScript</span><span>Supabase</span><span>Tailwind</span><span>Advanced Excel</span>
-          </div>
-        </div>
-
-        <div data-aos="fade-left" data-aos-delay="180" class="relative">
-          <div class="glass rounded-3xl p-4 shadow-glow">
-            <div class="project-screen rounded-2xl border border-white/5 overflow-hidden">
-              <div class="h-10 border-b border-white/5 flex items-center justify-between px-4">
-                <div class="flex gap-1.5"><i class="w-2 h-2 rounded-full bg-red-300/60"></i><i class="w-2 h-2 rounded-full bg-yellow-300/60"></i><i class="w-2 h-2 rounded-full bg-green-300/60"></i></div>
-                <span class="mono text-[9px] text-slate-500">ALFRIE / ANALYTICS.OS</span>
-              </div>
-              <div class="p-5">
-                <div class="flex items-end justify-between"><div><p class="text-xs text-slate-500 mono">EXECUTIVE SIGNAL</p><p class="text-3xl font-black mt-1">Revenue intelligence</p></div><span class="text-xs text-cyan-300 mono">LIVE DEMO</span></div>
-                <div class="grid grid-cols-3 gap-3 mt-6">
-                  <div class="rounded-xl bg-white/[.035] border border-white/5 p-3"><p class="text-[10px] text-slate-500">REVENUE</p><p class="font-bold mt-1">₱8.42M</p><p class="text-[10px] text-cyan-300 mt-2">+18.4%</p></div>
-                  <div class="rounded-xl bg-white/[.035] border border-white/5 p-3"><p class="text-[10px] text-slate-500">MARGIN</p><p class="font-bold mt-1">31.8%</p><p class="text-[10px] text-cyan-300 mt-2">Healthy</p></div>
-                  <div class="rounded-xl bg-white/[.035] border border-white/5 p-3"><p class="text-[10px] text-slate-500">DATA ROWS</p><p class="font-bold mt-1">60K+</p><p class="text-[10px] text-cyan-300 mt-2">Processed</p></div>
-                </div>
-                <div class="mt-5 rounded-xl bg-black/20 border border-white/5 p-4">
-                  <div class="flex items-center justify-between text-[10px] text-slate-500 mb-3"><span>PERFORMANCE TREND</span><span>YTD</span></div>
-                  <svg viewBox="0 0 520 150" class="w-full h-36" preserveAspectRatio="none"><path d="M0 120 C50 112 55 90 100 101 S160 115 205 78 S270 92 310 60 S360 78 405 44 S470 62 520 18" fill="none" stroke="#67e8f9" stroke-width="3"/><path d="M0 120 C50 112 55 90 100 101 S160 115 205 78 S270 92 310 60 S360 78 405 44 S470 62 520 18 L520 150 L0 150Z" fill="url(#g)" opacity=".12"/><defs><linearGradient id="g" x1="0" x2="0" y1="0" y2="1"><stop stop-color="#67e8f9"/><stop offset="1" stop-color="#67e8f9" stop-opacity="0"/></linearGradient></defs></svg>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div class="absolute -bottom-5 -left-5 glass rounded-2xl px-4 py-3 flex items-center gap-3" data-aos="zoom-in" data-aos-delay="700"><div class="w-9 h-9 rounded-xl bg-cyan-300/10 grid place-items-center text-cyan-300">↗</div><div><p class="text-xs font-bold">10+ years</p><p class="text-[10px] text-slate-500">data & business experience</p></div></div>
-        </div>
-      </div>
-      <div class="max-w-7xl mx-auto px-5 lg:px-8 pb-12 flex items-center gap-4 text-xs text-slate-600 mono"><span>SCROLL TO EXPLORE</span><span class="w-20 h-px bg-slate-800"></span><span>01 — 06</span></div>
-    </section>
-
-    <!-- PROOF -->
-    <section class="border-y border-white/5 bg-white/[.015]">
-      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-9 grid grid-cols-2 md:grid-cols-4 gap-8">
-        <div data-aos="fade-up"><p class="text-3xl font-black text-white">10+</p><p class="text-sm text-slate-500 mt-1">years across data & finance</p></div>
-        <div data-aos="fade-up" data-aos-delay="80"><p class="text-3xl font-black text-white">60K+</p><p class="text-sm text-slate-500 mt-1">rows handled in analytics systems</p></div>
-        <div data-aos="fade-up" data-aos-delay="160"><p class="text-3xl font-black text-white">4</p><p class="text-sm text-slate-500 mt-1">portfolio systems & web builds</p></div>
-        <div data-aos="fade-up" data-aos-delay="240"><p class="text-3xl font-black text-white">3</p><p class="text-sm text-slate-500 mt-1">core domains: healthcare, finance, BI</p></div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section id="work" class="max-w-7xl mx-auto px-5 lg:px-8 py-28">
-      <div data-aos="fade-up" class="max-w-3xl"><p class="mono text-cyan-300 text-xs">02 / SELECTED WORK</p><h2 class="mt-4 text-4xl md:text-6xl font-black tracking-tight">Systems, not screenshots.</h2><p class="mt-5 text-slate-400 text-lg">These demos show how I think: start with a business problem, model the data, build the interface, then make the insight usable.</p></div>
-      <div class="mt-12 grid lg:grid-cols-2 gap-6">
-        <article class="project-card glass rounded-3xl overflow-hidden" data-aos="fade-up">
-          <div class="project-screen p-4 h-64"><div class="h-full rounded-2xl border border-white/10 bg-[#0a101b] p-4 overflow-hidden"><div class="flex justify-between"><span class="mono text-[9px] text-cyan-300">SALES IQ / EXECUTIVE</span><span class="text-[9px] text-slate-500">DEMO DATA</span></div><div class="grid grid-cols-4 gap-2 mt-5"><div class="h-14 bg-white/5 rounded-lg"></div><div class="h-14 bg-white/5 rounded-lg"></div><div class="h-14 bg-white/5 rounded-lg"></div><div class="h-14 bg-white/5 rounded-lg"></div></div><div class="h-24 mt-3 rounded-lg bg-white/[.03] border border-white/5"><svg viewBox="0 0 500 100" class="w-full h-full"><path d="M0 75 L60 64 L110 71 L170 44 L230 55 L290 31 L350 39 L410 18 L500 25" fill="none" stroke="#67e8f9" stroke-width="2.5"/></svg></div></div></div>
-          <div class="p-7"><div class="flex items-center justify-between gap-4"><h3 class="text-2xl font-black">Sales Intelligence</h3><span class="mono text-[10px] text-slate-500">01 / 04</span></div><p class="mt-3 text-slate-400">Executive commercial dashboard with revenue, profitability, target achievement, pipeline outcomes, sales-force ranking, regional performance and drill-down transactions.</p><div class="flex flex-wrap gap-2 mt-5"><span class="tag">JavaScript</span><span class="tag">Supabase</span><span class="tag">BI</span><span class="tag">Data Modeling</span></div><a target="_blank" rel="noopener" href="https://salesforce-tawny-xi.vercel.app/" class="inline-flex mt-7 items-center gap-2 text-cyan-300 font-bold hover:gap-3 transition">Open live demo ↗</a></div>
-        </article>
-
-        <article class="project-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-screen p-4 h-64"><div class="h-full rounded-2xl border border-white/10 bg-[#0a101b] p-4 overflow-hidden"><div class="flex justify-between"><span class="mono text-[9px] text-indigo-300">PAYROLL / COMMAND CENTER</span><span class="text-[9px] text-slate-500">ANALYTICS</span></div><div class="grid grid-cols-5 gap-2 mt-5"><div class="h-12 bg-white/5 rounded-lg"></div><div class="h-12 bg-white/5 rounded-lg"></div><div class="h-12 bg-white/5 rounded-lg"></div><div class="h-12 bg-white/5 rounded-lg"></div><div class="h-12 bg-white/5 rounded-lg"></div></div><div class="grid grid-cols-2 gap-2 mt-3"><div class="h-24 rounded-lg bg-white/[.03] border border-white/5"></div><div class="h-24 rounded-lg bg-white/[.03] border border-white/5"></div></div></div></div>
-          <div class="p-7"><div class="flex items-center justify-between gap-4"><h3 class="text-2xl font-black">Payroll Command Center</h3><span class="mono text-[10px] text-slate-500">02 / 04</span></div><p class="mt-3 text-slate-400">A payroll analyst workspace designed around payroll processing, reconciliation, exceptions, employee analytics, benefits, statutory compliance and audit reporting.</p><div class="flex flex-wrap gap-2 mt-5"><span class="tag">Payroll Analytics</span><span class="tag">Reconciliation</span><span class="tag">Dashboard UX</span></div><a target="_blank" rel="noopener" href="https://vallealfrie-png.github.io/Payroll/" class="inline-flex mt-7 items-center gap-2 text-cyan-300 font-bold hover:gap-3 transition">Open live demo ↗</a></div>
-        </article>
-
-        <article class="project-card glass rounded-3xl overflow-hidden" data-aos="fade-up">
-          <div class="project-screen p-4 h-64"><div class="h-full rounded-2xl border border-white/10 bg-[#0a101b] p-4"><div class="flex justify-between"><span class="mono text-[9px] text-emerald-300">VIBEFLOW / WORKSPACE</span><span class="text-[9px] text-slate-500">v2.4</span></div><div class="grid grid-cols-3 gap-3 mt-6"><div class="col-span-1 space-y-2"><div class="h-8 rounded bg-white/5"></div><div class="h-8 rounded bg-white/5"></div><div class="h-8 rounded bg-white/5"></div><div class="h-8 rounded bg-white/5"></div></div><div class="col-span-2 rounded-xl bg-white/[.03] border border-white/5 p-3"><div class="h-4 w-1/2 rounded bg-white/5"></div><div class="h-3 w-3/4 rounded bg-white/5 mt-3"></div><div class="h-20 rounded bg-white/5 mt-5"></div></div></div></div></div>
-          <div class="p-7"><div class="flex items-center justify-between gap-4"><h3 class="text-2xl font-black">VibeFlow Project Management</h3><span class="mono text-[10px] text-slate-500">03 / 04</span></div><p class="mt-3 text-slate-400">Operational workspace for projects, clients, teams, budgets, tasks and delivery visibility — presented as a clean enterprise-style product.</p><div class="flex flex-wrap gap-2 mt-5"><span class="tag">Product UI</span><span class="tag">Operations</span><span class="tag">Workflow</span></div><a target="_blank" rel="noopener" href="https://vallealfrie-png.github.io/projectmanagement/" class="inline-flex mt-7 items-center gap-2 text-cyan-300 font-bold hover:gap-3 transition">Open live demo ↗</a></div>
-        </article>
-
-        <article class="project-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
-          <div class="project-screen p-4 h-64"><div class="h-full rounded-2xl border border-white/10 bg-[#0a101b] p-5"><p class="mono text-[9px] text-amber-300">CLIENT WEBSITE / AUSTRALIA</p><h4 class="text-3xl font-black mt-5">Quality.<br>Affordable.<br>Relocatable.</h4><div class="mt-6 h-2 w-32 bg-white/10 rounded"></div><div class="mt-2 h-2 w-48 bg-white/5 rounded"></div></div></div>
-          <div class="p-7"><div class="flex items-center justify-between gap-4"><h3 class="text-2xl font-black">MyCottage Client Website</h3><span class="mono text-[10px] text-slate-500">04 / 04</span></div><p class="mt-3 text-slate-400">A conversion-focused Australian business website with product models, interactive pricing estimator, technical specifications, process, FAQs and quote form.</p><div class="flex flex-wrap gap-2 mt-5"><span class="tag">Web Design</span><span class="tag">Tailwind CSS</span><span class="tag">Conversion UX</span></div><a target="_blank" rel="noopener" href="https://clientsample.vercel.app/" class="inline-flex mt-7 items-center gap-2 text-cyan-300 font-bold hover:gap-3 transition">Open live demo ↗</a></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CAPABILITIES -->
-    <section id="capabilities" class="border-y border-white/5 bg-[#090f1a]">
-      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-28 grid lg:grid-cols-[.8fr_1.2fr] gap-16">
-        <div data-aos="fade-right"><p class="mono text-cyan-300 text-xs">03 / CAPABILITIES</p><h2 class="mt-4 text-4xl md:text-5xl font-black">What I can build for your business.</h2><p class="mt-5 text-slate-400 leading-relaxed">I sit between analytics and development. That means I can take a business question from raw data all the way to a usable interface.</p><a href="#contact" class="inline-flex mt-8 text-white font-bold border-b border-cyan-300 pb-1">Tell me what you're trying to solve →</a></div>
-        <div class="grid sm:grid-cols-2 gap-4" data-aos="fade-left">
-          <div class="glass rounded-2xl p-6"><span class="mono text-cyan-300 text-xs">01</span><h3 class="text-xl font-bold mt-4">Business Intelligence</h3><p class="text-sm text-slate-400 mt-2">Executive dashboards, KPI scorecards, drilldowns, trends and decision-ready reporting.</p></div>
-          <div class="glass rounded-2xl p-6"><span class="mono text-cyan-300 text-xs">02</span><h3 class="text-xl font-bold mt-4">Data Engineering</h3><p class="text-sm text-slate-400 mt-2">Relational models, ETL/ELT pipelines, data cleaning, chunking and synchronization.</p></div>
-          <div class="glass rounded-2xl p-6"><span class="mono text-cyan-300 text-xs">03</span><h3 class="text-xl font-bold mt-4">Full-Stack Systems</h3><p class="text-sm text-slate-400 mt-2">Responsive web apps backed by PostgreSQL/Supabase and purpose-built business logic.</p></div>
-          <div class="glass rounded-2xl p-6"><span class="mono text-cyan-300 text-xs">04</span><h3 class="text-xl font-bold mt-4">Automation</h3><p class="text-sm text-slate-400 mt-2">Automated reporting, workflows and AI-assisted data operations that remove repetitive work.</p></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SKILLS -->
-    <section class="max-w-7xl mx-auto px-5 lg:px-8 py-24">
-      <div class="grid lg:grid-cols-2 gap-16 items-center">
-        <div data-aos="fade-up"><p class="mono text-cyan-300 text-xs">04 / TOOLKIT</p><h2 class="mt-4 text-4xl md:text-5xl font-black">Technical depth with business context.</h2><p class="mt-5 text-slate-400">The value isn't the tool by itself. It's knowing which tool belongs at which part of the problem.</p></div>
-        <div class="space-y-6" data-aos="fade-left">
-          <div><div class="flex justify-between text-sm mb-2"><span>SQL / PostgreSQL</span><span class="mono text-slate-500">ADVANCED</span></div><div class="bar"><span style="width:92%"></span></div></div>
-          <div><div class="flex justify-between text-sm mb-2"><span>JavaScript / Web Apps</span><span class="mono text-slate-500">ADVANCED</span></div><div class="bar"><span style="width:88%"></span></div></div>
-          <div><div class="flex justify-between text-sm mb-2"><span>Excel / VBA / Power Query</span><span class="mono text-slate-500">ADVANCED</span></div><div class="bar"><span style="width:94%"></span></div></div>
-          <div><div class="flex justify-between text-sm mb-2"><span>Supabase / Data Systems</span><span class="mono text-slate-500">ADVANCED</span></div><div class="bar"><span style="width:90%"></span></div></div>
-          <div><div class="flex justify-between text-sm mb-2"><span>Python / Analytics</span><span class="mono text-slate-500">WORKING</span></div><div class="bar"><span style="width:76%"></span></div></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- EXPERIENCE -->
-    <section id="experience" class="border-y border-white/5 bg-[#090f1a]">
-      <div class="max-w-7xl mx-auto px-5 lg:px-8 py-28">
-        <div data-aos="fade-up"><p class="mono text-cyan-300 text-xs">05 / EXPERIENCE</p><h2 class="mt-4 text-4xl md:text-5xl font-black">A career built around accuracy.</h2></div>
-        <div class="mt-14 grid lg:grid-cols-[.35fr_1fr] gap-10">
-          <div class="text-slate-500 text-sm">2022 — PRESENT<br><span class="text-slate-700">PHMC</span><br><br>2013 — 2020<br><span class="text-slate-700">VETERANS BANK</span><br><br>2011 — 2012<br><span class="text-slate-700">PROFRIENDS</span></div>
-          <div class="space-y-12">
-            <div data-aos="fade-up" class="border-l border-cyan-300/30 pl-7"><p class="mono text-xs text-cyan-300">PERPETUAL HELP MEDICAL CENTER</p><h3 class="text-2xl font-bold mt-2">Data Analyst / Full-Stack Developer</h3><p class="text-slate-400 mt-3 leading-relaxed">Transformed healthcare ERP data from static files; extracted, cleaned and modeled unstructured transactional data; built automated databases and dashboards; analyzed consumer demographics and hospital visitor trends; used AI-assisted techniques for data synchronization, mining and cost analysis.</p></div>
-            <div data-aos="fade-up" class="border-l border-slate-700 pl-7"><p class="mono text-xs text-slate-500">VETERANS BANK</p><h3 class="text-2xl font-bold mt-2">Accounting Personnel</h3><p class="text-slate-400 mt-3 leading-relaxed">Handled outward/inward check reconciliation, transaction monitoring and coordination with teams and branches to resolve ledger issues. Developed strong process knowledge across banking clearing and reconciliation.</p></div>
-            <div data-aos="fade-up" class="border-l border-slate-700 pl-7"><p class="mono text-xs text-slate-500">PROFRIENDS</p><h3 class="text-2xl font-bold mt-2">Loan Processor</h3><p class="text-slate-400 mt-3 leading-relaxed">Processed high-volume loan applications while maintaining electronic records, meeting deadlines and protecting data privacy.</p></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="about" class="max-w-7xl mx-auto px-5 lg:px-8 py-28">
-      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-16 items-start">
-        <div data-aos="fade-right"><p class="mono text-cyan-300 text-xs">06 / ABOUT</p><h2 class="mt-4 text-4xl md:text-6xl font-black tracking-tight">The uncommon combination.</h2><p class="mt-6 text-xl text-slate-300 leading-relaxed">I started in business and accounting, moved into data analysis, and then started building the systems behind the analysis.</p><p class="mt-5 text-slate-400 leading-relaxed">That background helps me understand more than charts. I understand reconciliation, controls, operational processes, financial logic, healthcare data, and the importance of making information trustworthy before making it beautiful.</p><div class="mt-8 flex flex-wrap gap-3"><span class="rounded-full border border-white/10 px-4 py-2 text-sm">Business Administration</span><span class="rounded-full border border-white/10 px-4 py-2 text-sm">Finance & Reconciliation</span><span class="rounded-full border border-white/10 px-4 py-2 text-sm">Healthcare Data</span><span class="rounded-full border border-white/10 px-4 py-2 text-sm">Full-Stack Development</span></div></div>
-        <div class="glass rounded-3xl p-7" data-aos="fade-left"><p class="mono text-xs text-slate-500">MY APPROACH</p><div class="mt-7 space-y-7"><div><div class="flex gap-4"><span class="mono text-cyan-300">01</span><div><h3 class="font-bold">Understand the business</h3><p class="text-sm text-slate-500 mt-1">What decision needs to become easier?</p></div></div></div><div><div class="flex gap-4"><span class="mono text-cyan-300">02</span><div><h3 class="font-bold">Make the data reliable</h3><p class="text-sm text-slate-500 mt-1">Clean, model, reconcile and validate before visualization.</p></div></div></div><div><div class="flex gap-4"><span class="mono text-cyan-300">03</span><div><h3 class="font-bold">Build the experience</h3><p class="text-sm text-slate-500 mt-1">Turn the model into an interface people want to use.</p></div></div></div><div><div class="flex gap-4"><span class="mono text-cyan-300">04</span><div><h3 class="font-bold">Automate the repeatable</h3><p class="text-sm text-slate-500 mt-1">Reduce manual work so the system keeps creating value.</p></div></div></div></div></div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="relative overflow-hidden border-t border-white/5 bg-[#090f1a]">
-      <div class="absolute -bottom-48 left-1/2 -translate-x-1/2 w-[50rem] h-[25rem] bg-cyan-400/10 blur-[110px] rounded-full"></div>
-      <div class="max-w-5xl mx-auto px-5 lg:px-8 py-28 text-center relative">
-        <p class="mono text-cyan-300 text-xs" data-aos="fade-up">LET'S BUILD SOMETHING USEFUL</p>
-        <h2 data-aos="fade-up" data-aos-delay="80" class="mt-5 text-5xl md:text-7xl font-black tracking-[-.04em]">Have a messy spreadsheet,<br><span class="text-slate-500">a slow process, or a big idea?</span></h2>
-        <p data-aos="fade-up" data-aos-delay="140" class="mt-7 text-slate-400 max-w-2xl mx-auto text-lg">Tell me what you're trying to improve. I can help turn the problem into a data product, dashboard, website, or automated workflow.</p>
-        <div data-aos="zoom-in" data-aos-delay="220" class="mt-9 flex flex-wrap justify-center gap-3">
-          <a href="mailto:vallealfrie@gmail.com?subject=Freelance%20Project%20Inquiry" class="rounded-xl bg-cyan-300 text-slate-950 px-6 py-3.5 font-black hover:bg-cyan-200 transition">Email me</a>
-          <a href="tel:+639073574769" class="rounded-xl border border-slate-700 px-6 py-3.5 font-bold hover:border-cyan-300/50 transition">Call / WhatsApp</a>
-        </div>
-        <p class="mt-8 text-sm text-slate-600">vallealfrie@gmail.com · Philippines · Available for remote freelance work</p>
-      </div>
-    </section>
-  </main>
-
-  <footer class="border-t border-white/5">
-    <div class="max-w-7xl mx-auto px-5 lg:px-8 py-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-      <span>© <span id="year"></span> Alfrie S. Valle. Built with HTML, Tailwind CSS & JavaScript.</span>
-      <div class="flex gap-5"><a href="#work" class="hover:text-cyan-300">Work</a><a href="Alfrie-Valle-CV.pdf" download class="hover:text-cyan-300">CV</a><a href="mailto:vallealfrie@gmail.com" class="hover:text-cyan-300">Contact</a></div>
+<header class="fixed top-0 inset-x-0 z-50 bg-[#050b14]/80 backdrop-blur-xl border-b border-white/5">
+  <nav class="max-w-6xl mx-auto px-5 h-16 flex items-center justify-between">
+    <a href="#top" class="font-extrabold tracking-tight">ALFRIE<span class="text-cyanx">.</span></a>
+    <div class="hidden md:flex items-center gap-7 text-sm">
+      <a class="navlink" href="#work">Work</a><a class="navlink" href="#capabilities">Capabilities</a>
+      <a class="navlink" href="#about">About</a><a class="navlink" href="#contact">Contact</a>
     </div>
-  </footer>
+    <a href="#contact" class="rounded-full border border-cyanx/30 bg-cyanx/10 px-4 py-2 text-sm font-semibold hover:bg-cyanx/20">Let's work together</a>
+  </nav>
+</header>
 
-  <style>.tag{font-size:10px;font-family:'DM Mono',monospace;color:#94a3b8;border:1px solid rgba(148,163,184,.14);padding:.35rem .55rem;border-radius:.6rem;background:rgba(255,255,255,.02)}</style>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
-  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-  <script>
-    AOS.init({ once:true, offset:70, duration:800, easing:'ease-out-cubic' });
-    gsap.registerPlugin(ScrollTrigger);
-    gsap.from('header nav',{y:-30,opacity:0,duration:.8,ease:'power3.out'});
-    gsap.to('.bar > span',{width:(i,el)=>el.style.width, duration:1.4, ease:'power3.out', scrollTrigger:{trigger:'#capabilities',start:'top 70%'}});
-    const dot=document.getElementById('cursorDot'), ring=document.getElementById('cursorRing');
-    window.addEventListener('mousemove',e=>{gsap.to(dot,{x:e.clientX,y:e.clientY,duration:.08});gsap.to(ring,{x:e.clientX,y:e.clientY,duration:.22,ease:'power2.out'});});
-    document.querySelectorAll('a').forEach(a=>a.addEventListener('mouseenter',()=>gsap.to(ring,{scale:1.5,duration:.2}))); document.querySelectorAll('a').forEach(a=>a.addEventListener('mouseleave',()=>gsap.to(ring,{scale:1,duration:.2})));
-    document.getElementById('year').textContent=new Date().getFullYear();
-  </script>
+<main id="top">
+<section class="relative min-h-screen flex items-center pt-24">
+  <div class="max-w-6xl mx-auto px-5 py-20 w-full grid lg:grid-cols-[1.2fr_.8fr] gap-14 items-center">
+    <div data-aos="fade-up">
+      <div class="mono text-xs text-cyanx mb-5 tracking-[.25em]">DATA • SYSTEMS • AUTOMATION</div>
+      <h1 class="text-5xl md:text-7xl font-extrabold leading-[.98] tracking-[-.04em]">
+        I turn messy data into <span class="gradient">working systems.</span>
+      </h1>
+      <p class="mt-7 text-lg md:text-xl text-slate-400 max-w-2xl leading-relaxed">
+        Data Analyst & Full-Stack Developer building dashboards, analytics platforms, databases and automated business workflows.
+      </p>
+      <div class="mt-9 flex flex-wrap gap-3">
+        <a href="#work" class="px-6 py-3 rounded-xl bg-white text-slate-950 font-bold hover:bg-cyanx transition">Explore my work</a>
+        <a href="mailto:vallealfrie@gmail.com?subject=Freelance%20Project%20Inquiry" class="px-6 py-3 rounded-xl border border-white/10 hover:border-cyanx/40 font-semibold transition">Hire me</a>
+      </div>
+      <div class="mt-10 flex flex-wrap gap-x-6 gap-y-2 text-sm text-slate-500">
+        <span>10+ years experience</span><span>•</span><span>Healthcare + Finance</span><span>•</span><span>60,000+ row ecosystem</span>
+      </div>
+    </div>
+
+    <div data-aos="fade-left" data-aos-delay="150" class="card rounded-3xl p-5 glow">
+      <div class="flex items-center justify-between mb-5">
+        <div><div class="mono text-[10px] text-slate-500">LIVE / PORTFOLIO SIGNAL</div><div class="font-bold mt-1">Business Intelligence Stack</div></div>
+        <div class="h-3 w-3 rounded-full bg-mint shadow-[0_0_18px_#7cf2c4]"></div>
+      </div>
+      <div class="grid grid-cols-2 gap-3">
+        <div class="rounded-2xl bg-white/[.03] p-4"><div class="text-2xl font-bold">10+</div><div class="text-xs text-slate-500 mt-1">Years in data & business</div></div>
+        <div class="rounded-2xl bg-white/[.03] p-4"><div class="text-2xl font-bold">60K+</div><div class="text-xs text-slate-500 mt-1">Rows processed</div></div>
+        <div class="rounded-2xl bg-white/[.03] p-4"><div class="text-2xl font-bold">SQL</div><div class="text-xs text-slate-500 mt-1">PostgreSQL / Supabase</div></div>
+        <div class="rounded-2xl bg-white/[.03] p-4"><div class="text-2xl font-bold">BI</div><div class="text-xs text-slate-500 mt-1">Dashboards & KPIs</div></div>
+      </div>
+      <div class="mt-4 rounded-2xl bg-black/20 p-4">
+        <div class="flex justify-between text-xs text-slate-500"><span>DATA → MODEL → INSIGHT → ACTION</span><span>01—04</span></div>
+        <div class="mt-4 h-20 flex items-end gap-1">
+          <script>
+          document.write(Array.from({length:34},(_,i)=>`<span class="flex-1 rounded-t bg-cyan-300/30" style="height:${20+Math.round(55*Math.abs(Math.sin(i*.65)))}%"></span>`).join(''))
+          </script>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="work" class="relative py-28">
+<div class="max-w-6xl mx-auto px-5">
+  <div data-aos="fade-up">
+    <div class="mono text-xs text-cyanx tracking-[.25em]">SELECTED WORK</div>
+    <h2 class="mt-3 text-4xl md:text-5xl font-bold tracking-tight">Case studies, not just screenshots.</h2>
+    <p class="mt-4 text-slate-400 max-w-2xl">Explore the systems I use to demonstrate analytics, operational intelligence, product thinking and front-end execution.</p>
+  </div>
+
+  <div class="mt-12 space-y-5">
+    <article class="case card rounded-3xl p-6 md:p-8" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-8">
+        <div>
+          <div class="mono text-xs text-cyanx">01 / SALES INTELLIGENCE</div>
+          <h3 class="text-2xl md:text-3xl font-bold mt-3">Sales Force Intelligence & Analytics Platform</h3>
+          <p class="mt-4 text-slate-400 leading-relaxed">Interactive sales performance system with dynamic time slicing, target-versus-actual tracking, revenue breakdowns, territory analysis and product-stream intelligence.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs"><span class="tag">Analytics</span><span class="tag">KPI Design</span><span class="tag">Dashboard UI</span><span class="tag">JavaScript</span></div>
+          <a href="https://salesforce-tawny-xi.vercel.app/" target="_blank" class="mt-7 inline-flex items-center gap-2 font-semibold text-cyanx">Open live demo <span class="arrow">→</span></a>
+        </div>
+        <div class="rounded-2xl bg-black/25 border border-white/5 p-5">
+          <div class="flex justify-between text-xs text-slate-500 mb-4"><span>REVENUE PERFORMANCE</span><span>LIVE DEMO</span></div>
+          <div class="h-48 flex items-end gap-2">
+            <script>document.write(Array.from({length:22},(_,i)=>`<span class="flex-1 rounded-t bg-gradient-to-t from-cyan-400/10 to-cyan-300/60" style="height:${25+Math.round(55*Math.abs(Math.sin(i*.5)))}%"></span>`).join(''))</script>
+          </div>
+          <div class="grid grid-cols-3 gap-2 mt-4 text-center text-xs"><div class="bg-white/[.03] rounded-xl p-3"><b class="block text-white">Target</b><span class="text-slate-500">tracking</span></div><div class="bg-white/[.03] rounded-xl p-3"><b class="block text-white">Actual</b><span class="text-slate-500">revenue</span></div><div class="bg-white/[.03] rounded-xl p-3"><b class="block text-white">Region</b><span class="text-slate-500">mix</span></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="case card rounded-3xl p-6 md:p-8" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-8">
+        <div class="order-2 lg:order-1 rounded-2xl bg-black/25 border border-white/5 p-5">
+          <div class="mono text-xs text-slate-500">PAYROLL COMMAND CENTER</div>
+          <div class="mt-5 grid grid-cols-2 gap-3"><div class="h-24 rounded-xl bg-white/[.03] p-4"><span class="text-xs text-slate-500">Payroll</span><b class="block text-2xl mt-2">Run</b></div><div class="h-24 rounded-xl bg-white/[.03] p-4"><span class="text-xs text-slate-500">Audit</span><b class="block text-2xl mt-2">Ready</b></div></div>
+          <div class="mt-3 h-3 rounded-full bg-white/5 overflow-hidden"><div class="h-full w-4/5 bg-cyanx/60 rounded-full"></div></div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="mono text-xs text-cyanx">02 / PAYROLL</div>
+          <h3 class="text-2xl md:text-3xl font-bold mt-3">Payroll Analytics & Command Center</h3>
+          <p class="mt-4 text-slate-400 leading-relaxed">A business-oriented payroll interface demonstrating employee analytics, payroll processing, reconciliation, exceptions and audit-oriented reporting.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs"><span class="tag">Payroll</span><span class="tag">Data Reconciliation</span><span class="tag">Reporting</span><span class="tag">UI/UX</span></div>
+          <a href="https://vallealfrie-png.github.io/Payroll/" target="_blank" class="mt-7 inline-flex items-center gap-2 font-semibold text-cyanx">Open live demo <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </article>
+
+    <article class="case card rounded-3xl p-6 md:p-8" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[.9fr_1.1fr] gap-8">
+        <div>
+          <div class="mono text-xs text-cyanx">03 / OPERATIONS</div>
+          <h3 class="text-2xl md:text-3xl font-bold mt-3">Project Management & Operational Delivery Matrix</h3>
+          <p class="mt-4 text-slate-400 leading-relaxed">Operational tracking portal designed around project delivery lifecycles, resource utilization, task completion velocity and bottleneck risk indicators.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs"><span class="tag">Operations</span><span class="tag">Project Analytics</span><span class="tag">Risk Indicators</span></div>
+          <a href="https://vallealfrie-png.github.io/projectmanagement/" target="_blank" class="mt-7 inline-flex items-center gap-2 font-semibold text-cyanx">Open live demo <span class="arrow">→</span></a>
+        </div>
+        <div class="rounded-2xl bg-black/25 border border-white/5 p-5">
+          <div class="flex justify-between text-xs text-slate-500"><span>DELIVERY HEALTH</span><span>OPERATIONS</span></div>
+          <div class="mt-6 space-y-4"><div><div class="flex justify-between text-xs mb-2"><span>Completion</span><span>84%</span></div><div class="h-2 bg-white/5 rounded-full"><div class="w-[84%] h-full bg-mint/60 rounded-full"></div></div></div><div><div class="flex justify-between text-xs mb-2"><span>Resource utilization</span><span>72%</span></div><div class="h-2 bg-white/5 rounded-full"><div class="w-[72%] h-full bg-cyanx/60 rounded-full"></div></div></div><div><div class="flex justify-between text-xs mb-2"><span>Risk exposure</span><span>18%</span></div><div class="h-2 bg-white/5 rounded-full"><div class="w-[18%] h-full bg-purple-300/60 rounded-full"></div></div></div></div>
+        </div>
+      </div>
+    </article>
+
+    <article class="case card rounded-3xl p-6 md:p-8" data-aos="fade-up">
+      <div class="grid lg:grid-cols-[1.1fr_.9fr] gap-8">
+        <div class="order-2 lg:order-1 rounded-2xl bg-black/25 border border-white/5 p-6 flex items-center justify-center">
+          <div class="w-full rounded-2xl bg-white/[.04] p-6">
+            <div class="h-2 w-24 bg-white/30 rounded"></div><div class="h-2 w-40 bg-white/10 rounded mt-3"></div>
+            <div class="grid grid-cols-3 gap-3 mt-6"><div class="h-20 rounded-xl bg-cyanx/10"></div><div class="h-20 rounded-xl bg-white/5"></div><div class="h-20 rounded-xl bg-mint/10"></div></div>
+            <div class="h-12 rounded-xl bg-white/5 mt-3"></div>
+          </div>
+        </div>
+        <div class="order-1 lg:order-2">
+          <div class="mono text-xs text-cyanx">04 / CLIENT WEBSITE</div>
+          <h3 class="text-2xl md:text-3xl font-bold mt-3">MyCottage — Business Website Concept</h3>
+          <p class="mt-4 text-slate-400 leading-relaxed">A client-facing website example showing that my work extends beyond dashboards into polished business websites, presentation, conversion-focused sections and responsive UI.</p>
+          <div class="mt-5 flex flex-wrap gap-2 text-xs"><span class="tag">Web Design</span><span class="tag">Responsive UI</span><span class="tag">Business Website</span></div>
+          <a href="https://clientsample.vercel.app/" target="_blank" class="mt-7 inline-flex items-center gap-2 font-semibold text-cyanx">Open live demo <span class="arrow">→</span></a>
+        </div>
+      </div>
+    </article>
+  </div>
+</div>
+</section>
+
+<section id="capabilities" class="py-28 border-y border-white/5 bg-white/[.015]">
+<div class="max-w-6xl mx-auto px-5">
+<div data-aos="fade-up"><div class="mono text-xs text-cyanx tracking-[.25em]">WHAT I CAN BUILD</div><h2 class="mt-3 text-4xl md:text-5xl font-bold">From raw data to usable product.</h2></div>
+<div class="grid md:grid-cols-2 lg:grid-cols-3 gap-4 mt-12">
+  <div class="card rounded-2xl p-6" data-aos="fade-up"><div class="text-cyanx mono text-sm">01</div><h3 class="font-bold text-xl mt-5">Business Intelligence</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Executive dashboards, KPI scorecards, trend analysis, segmentation and operational reporting.</p></div>
+  <div class="card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="60"><div class="text-cyanx mono text-sm">02</div><h3 class="font-bold text-xl mt-5">Data Engineering</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Relational modeling, ETL/ELT pipelines, data hygiene, auditing and large dataset processing.</p></div>
+  <div class="card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="120"><div class="text-cyanx mono text-sm">03</div><h3 class="font-bold text-xl mt-5">Automation</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Automated workflows and systems that reduce repetitive manual reporting and data handling.</p></div>
+  <div class="card rounded-2xl p-6" data-aos="fade-up"><div class="text-cyanx mono text-sm">04</div><h3 class="font-bold text-xl mt-5">Full-Stack Systems</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Database-backed applications using PostgreSQL/Supabase, JavaScript and modern responsive interfaces.</p></div>
+  <div class="card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="60"><div class="text-cyanx mono text-sm">05</div><h3 class="font-bold text-xl mt-5">Healthcare Data</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Experience transforming healthcare ERP data and building hospital-level analytics and monitoring systems.</p></div>
+  <div class="card rounded-2xl p-6" data-aos="fade-up" data-aos-delay="120"><div class="text-cyanx mono text-sm">06</div><h3 class="font-bold text-xl mt-5">Web Experiences</h3><p class="text-slate-400 mt-3 text-sm leading-relaxed">Responsive business websites and interfaces designed to make complex information easy to understand.</p></div>
+</div>
+</div>
+</section>
+
+<section id="about" class="py-28">
+<div class="max-w-6xl mx-auto px-5 grid lg:grid-cols-[.8fr_1.2fr] gap-14">
+<div data-aos="fade-right">
+<div class="mono text-xs text-cyanx tracking-[.25em]">ABOUT / EXPERIENCE</div>
+<h2 class="mt-3 text-4xl font-bold">Business experience changed how I build technology.</h2>
+<p class="mt-6 text-slate-400 leading-relaxed">My background spans data analysis, accounting reconciliation, finance operations and healthcare systems. That combination lets me approach development from the business side as well as the technical side.</p>
+<p class="mt-4 text-slate-400 leading-relaxed">At Perpetual Help Medical Center, I work with healthcare ERP data, build automated databases and dashboards, and translate complex metrics into reports for decision-makers.</p>
+</div>
+<div class="space-y-4">
+<div class="card rounded-2xl p-6" data-aos="fade-up"><div class="flex justify-between"><div><b>Perpetual Help Medical Center</b><div class="text-sm text-slate-500 mt-1">Data Analyst / Full-Stack Developer • 2022–Present</div></div><span class="mono text-xs text-cyanx">01</span></div><p class="text-sm text-slate-400 mt-4">Healthcare ERP data transformation, analytics, automated databases, dashboards, pricing analysis and data synchronization.</p></div>
+<div class="card rounded-2xl p-6" data-aos="fade-up"><div class="flex justify-between"><div><b>Veterans Bank</b><div class="text-sm text-slate-500 mt-1">Accounting Personnel • 2013–2020</div></div><span class="mono text-xs text-cyanx">02</span></div><p class="text-sm text-slate-400 mt-4">Financial reconciliation, transaction monitoring, ledger correction coordination and operational problem solving.</p></div>
+<div class="card rounded-2xl p-6" data-aos="fade-up"><div class="flex justify-between"><div><b>Profriends</b><div class="text-sm text-slate-500 mt-1">Loan Processor • 2011–2012</div></div><span class="mono text-xs text-cyanx">03</span></div><p class="text-sm text-slate-400 mt-4">Loan application processing, deadline management, electronic data handling and administrative coordination.</p></div>
+</div>
+</div>
+</section>
+
+<section class="py-28 border-y border-white/5">
+<div class="max-w-6xl mx-auto px-5">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6" data-aos="fade-up">
+<div><div class="mono text-xs text-cyanx tracking-[.25em]">TECHNICAL TOOLKIT</div><h2 class="mt-3 text-4xl font-bold">Tools I work with.</h2></div>
+<div class="text-sm text-slate-500">Built around analytics, systems and business reporting.</div>
+</div>
+<div class="grid md:grid-cols-2 gap-x-12 gap-y-7 mt-12">
+<div><div class="flex justify-between text-sm mb-2"><span>SQL / PostgreSQL</span><span class="mono text-slate-500">Advanced</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-cyanx/70 rounded-full" data-width="94%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-2"><span>Excel / VBA / Power Query</span><span class="mono text-slate-500">Advanced</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-mint/70 rounded-full" data-width="94%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-2"><span>JavaScript / Web UI</span><span class="mono text-slate-500">Strong</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-cyanx/70 rounded-full" data-width="88%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-2"><span>Supabase / PostgreSQL</span><span class="mono text-slate-500">Strong</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-mint/70 rounded-full" data-width="88%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-2"><span>Python</span><span class="mono text-slate-500">Working</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-cyanx/70 rounded-full" data-width="70%"></div></div></div>
+<div><div class="flex justify-between text-sm mb-2"><span>BI / Visualization</span><span class="mono text-slate-500">Strong</span></div><div class="h-1.5 bg-white/5 rounded-full"><div class="skillbar h-full bg-mint/70 rounded-full" data-width="88%"></div></div></div>
+</div>
+</div>
+</section>
+
+<section id="contact" class="py-32">
+<div class="max-w-5xl mx-auto px-5 text-center" data-aos="zoom-in">
+<div class="mono text-xs text-cyanx tracking-[.25em]">AVAILABLE FOR SELECT PROJECTS</div>
+<h2 class="mt-5 text-5xl md:text-7xl font-extrabold tracking-tight">Have a data problem?</h2>
+<h2 class="text-5xl md:text-7xl font-extrabold tracking-tight gradient">Let's build the solution.</h2>
+<p class="mt-7 text-slate-400 max-w-xl mx-auto">Whether you need a dashboard, automated reporting workflow, database-backed application or business website, let's talk about what you're trying to achieve.</p>
+<div class="mt-9 flex flex-wrap justify-center gap-3">
+<a href="mailto:vallealfrie@gmail.com?subject=Project%20Inquiry" class="px-7 py-3 rounded-xl bg-white text-slate-950 font-bold">Start a conversation</a>
+<a href="Alfrie-Valle-CV.pdf" download class="px-7 py-3 rounded-xl border border-white/10 font-semibold hover:border-cyanx/40">Download CV</a>
+</div>
+<div class="mt-8 text-sm text-slate-500">vallealfrie@gmail.com • 0907 357 4769</div>
+</div>
+</section>
+</main>
+
+<footer class="border-t border-white/5 py-8">
+<div class="max-w-6xl mx-auto px-5 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-600">
+<span>© 2026 Alfrie S. Valle</span><span>Data • Analytics • Automation • Full-Stack</span>
+</div>
+</footer>
+
+<style>
+.tag{padding:.45rem .7rem;border-radius:999px;background:rgba(255,255,255,.045);color:#94a3b8;border:1px solid rgba(255,255,255,.06)}
+</style>
+<script src="https://unpkg.com/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+<script>
+AOS.init({duration:800,once:true,offset:80});
+gsap.from("header",{y:-30,opacity:0,duration:.8,ease:"power3.out"});
+gsap.from("#top h1",{y:35,opacity:0,duration:1,ease:"power3.out",delay:.15});
+gsap.from("#top p",{y:25,opacity:0,duration:.8,ease:"power2.out",delay:.35});
+gsap.from("#top .rounded-xl",{y:20,opacity:0,duration:.7,stagger:.12,delay:.5});
+const obs=new IntersectionObserver(entries=>entries.forEach(e=>{
+ if(e.isIntersecting){e.target.querySelectorAll?.(".skillbar").forEach(b=>b.style.width=b.dataset.width)}
+}),{threshold:.2});
+document.querySelectorAll("section").forEach(s=>obs.observe(s));
+</script>
 </body>
 </html>
