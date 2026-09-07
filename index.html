@@ -61,10 +61,10 @@ body{background:#050b14;color:#e8f0f8}
 <!-- HERO: exact user-provided image -->
 <section class="pt-20 pb-10">
 <div class="max-w-7xl mx-auto px-4 md:px-5">
-<div class="hero-wrap rounded-2xl md:rounded-3xl overflow-hidden border border-cyanx/20 bg-black" data-aos="zoom-in">
+<div class="hero-wrap rounded-2xl md:rounded-3xl overflow-hidden border border-cyanx/20 bg-black">
 <img src="hero-section.png" alt="Alfrie Valle portfolio hero — data analyst, developer and problem solver" class="hero-img">
 </div>
-<div class="mt-7 flex flex-wrap items-center justify-between gap-4 px-1" data-aos="fade-up">
+<div class="hero-sub mt-7 flex flex-wrap items-center justify-between gap-4 px-1">
 <p class="text-slate-400 max-w-3xl">Data analytics, full-stack systems, automation, business websites and AI-assisted advertising creatives — presented as one practical digital skill set.</p>
 <div class="flex gap-3">
 <a href="#work" class="px-5 py-3 rounded-xl bg-cyanx text-slate-950 font-bold">Explore work</a>
@@ -237,10 +237,13 @@ body{background:#050b14;color:#e8f0f8}
 <script src="https://unpkg.com/gsap@3.12.7/dist/gsap.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
-AOS.init({duration:800,once:true,offset:80});
-gsap.from("header",{y:-30,opacity:0,duration:.8,ease:"power3.out"});
-gsap.from(".hero-wrap",{y:25,opacity:0,duration:1,ease:"power3.out",delay:.1});
-gsap.from(".hero-wrap + div",{y:18,opacity:0,duration:.7,ease:"power2.out",delay:.45});
+window.addEventListener("DOMContentLoaded", () => {
+  AOS.init({duration:800,once:true,offset:80});
+
+  gsap.from("header",{y:-30,opacity:0,duration:.8,ease:"power3.out"});
+  gsap.from(".hero-wrap",{y:25,opacity:0,duration:1,ease:"power3.out",delay:.1});
+  gsap.from(".hero-sub",{y:18,opacity:0,duration:.7,ease:"power2.out",delay:.45});
+});
 
 const modal=document.getElementById("mediaModal");
 const modalContent=document.getElementById("modalContent");
