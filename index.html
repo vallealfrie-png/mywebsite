@@ -235,14 +235,49 @@ body{background:#050b14;color:#e8f0f8}
 </div>
 
 <script src="https://unpkg.com/gsap@3.12.7/dist/gsap.min.js"></script>
+<script src="https://unpkg.com/gsap@3.12.7/dist/ScrollTrigger.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
 window.addEventListener("DOMContentLoaded", () => {
-  AOS.init({duration:800,once:true,offset:80});
+  // 1. Set once: false so AOS triggers when scrolling up and down
+  AOS.init({
+    duration: 800,
+    once: false,
+    mirror: true,
+    offset: 80
+  });
 
-  gsap.from("header",{y:-30,opacity:0,duration:.8,ease:"power3.out"});
-  gsap.from(".hero-wrap",{y:25,opacity:0,duration:1,ease:"power3.out",delay:.1});
-  gsap.from(".hero-sub",{y:18,opacity:0,duration:.7,ease:"power2.out",delay:.45});
+  // 2. Register GSAP ScrollTrigger
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Header animation on initial load
+  gsap.from("header", { y: -30, opacity: 0, duration: 0.8, ease: "power3.out" });
+
+  // Hero section animations tied to ScrollTrigger (repeats on scroll back up)
+  gsap.from(".hero-wrap", {
+    y: 25,
+    opacity: 0,
+    duration: 1,
+    ease: "power3.out",
+    scrollTrigger: {
+      trigger: ".hero-wrap",
+      start: "top 85%",
+      toggleActions: "play reverse play reverse"
+    }
+  });
+
+  gsap.from(".hero-sub", {
+    y: 18,
+    opacity: 0,
+    duration: 0.7,
+    delay: 0.1,
+    ease: "power2.out",
+    scrollTrigger: {
+      trigger: ".hero-sub",
+      start: "top 90%",
+      toggleActions: "play reverse play reverse"
+    }
+  });
 });
 
 const modal=document.getElementById("mediaModal");
