@@ -214,7 +214,8 @@ body{background:#050b14;color:#e8f0f8}
 <h2 class="mt-5 text-5xl md:text-7xl font-extrabold tracking-tight">Need data, systems<br><span class="gradient">or digital content?</span></h2>
 <p class="mt-7 text-slate-400 max-w-xl mx-auto">Tell me what you are trying to build, automate, analyze or promote. I can help turn the requirement into a practical digital solution.</p>
 <div class="mt-9 flex flex-wrap justify-center gap-3">
-<a href="mailto:vallealfrie@gmail.com?subject=Freelance%20Project%20Inquiry" class="px-7 py-3 rounded-xl bg-white text-slate-950 font-bold">Start a conversation</a>
+<!-- Updated Start a Conversation Button -->
+<button id="openContactBtn" class="px-7 py-3 rounded-xl bg-white text-slate-950 font-bold cursor-pointer hover:bg-slate-200 transition">Start a conversation</button>
 <a href="Alfrie_Valle_Updated_CV.pdf" download class="px-7 py-3 rounded-xl border border-white/10 font-semibold hover:border-cyanx/40">Download CV</a>
 </div>
 <div class="mt-8 text-sm text-slate-500">vallealfrie@gmail.com • 0907 357 4769</div>
@@ -228,10 +229,32 @@ body{background:#050b14;color:#e8f0f8}
 </div>
 </footer>
 
-<!-- Image/video lightbox -->
+<!-- Media Lightbox Modal -->
 <div id="mediaModal" class="modal fixed inset-0 z-[100] bg-black/90 backdrop-blur-md items-center justify-center p-4">
 <button id="closeModal" class="absolute top-5 right-5 w-11 h-11 rounded-full bg-white/10 text-white text-2xl">×</button>
 <div id="modalContent" class="max-w-6xl max-h-[90vh] w-full flex items-center justify-center"></div>
+</div>
+
+<!-- Contact Form Modal -->
+<div id="contactModal" class="modal fixed inset-0 z-[100] bg-black/80 backdrop-blur-md items-center justify-center p-4">
+  <div class="card p-8 rounded-3xl max-w-lg w-full relative">
+    <button id="closeContactModal" class="absolute top-5 right-5 w-8 h-8 rounded-full bg-white/10 text-slate-300 hover:text-white flex items-center justify-center text-xl cursor-pointer">&times;</button>
+    <div class="mono text-xs text-cyanx mb-1">GET IN TOUCH</div>
+    <h3 class="text-2xl font-bold">Start a conversation</h3>
+    <p class="text-sm text-slate-400 mt-1 mb-6">Send me a direct message about your project requirements.</p>
+    
+    <form action="https://formspree.io/f/xbjnqkyv" method="POST" class="flex flex-col gap-4">
+      <div>
+        <label class="block text-xs text-slate-400 mb-1 font-medium">Your Email</label>
+        <input type="email" name="email" placeholder="name@company.com" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyanx">
+      </div>
+      <div>
+        <label class="block text-xs text-slate-400 mb-1 font-medium">Message</label>
+        <textarea name="message" rows="4" placeholder="How can I help you with analytics, full-stack systems, or creative content?" required class="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:border-cyanx resize-none"></textarea>
+      </div>
+      <button type="submit" class="bg-cyanx text-slate-950 font-bold py-3.5 rounded-xl hover:opacity-90 transition cursor-pointer mt-2">Send Message</button>
+    </form>
+  </div>
 </div>
 
 <script src="https://unpkg.com/gsap@3.12.7/dist/gsap.min.js"></script>
@@ -280,6 +303,7 @@ window.addEventListener("DOMContentLoaded", () => {
   });
 });
 
+// Media Lightbox Handler
 const modal=document.getElementById("mediaModal");
 const modalContent=document.getElementById("modalContent");
 document.querySelectorAll(".gallery-card[data-img]").forEach(card=>{
@@ -297,8 +321,29 @@ document.querySelectorAll(".gallery-card[data-video]").forEach(card=>{
 function closeMedia(){modal.classList.remove("active");modalContent.innerHTML=""}
 document.getElementById("closeModal").addEventListener("click",closeMedia);
 modal.addEventListener("click",e=>{if(e.target===modal)closeMedia()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeMedia()});
 
+// Contact Modal Handler
+const contactModal = document.getElementById("contactModal");
+const openContactBtn = document.getElementById("openContactBtn");
+const closeContactBtn = document.getElementById("closeContactModal");
+
+if (openContactBtn && contactModal) {
+  openContactBtn.addEventListener("click", () => contactModal.classList.add("active"));
+  closeContactBtn.addEventListener("click", () => contactModal.classList.remove("active"));
+  contactModal.addEventListener("click", (e) => {
+    if (e.target === contactModal) contactModal.classList.remove("active");
+  });
+}
+
+// Global Escape Key listener
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){
+    closeMedia();
+    if(contactModal) contactModal.classList.remove("active");
+  }
+});
+
+// Gallery Filter
 document.querySelectorAll(".filter-btn").forEach(btn=>{
   btn.addEventListener("click",()=>{
     const filter=btn.dataset.filter;
